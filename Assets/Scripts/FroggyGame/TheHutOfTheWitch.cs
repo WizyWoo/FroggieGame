@@ -28,7 +28,13 @@ public class TheHutOfTheWitch : MonoBehaviour
     private static MockUpUser[] backingUsers = null;
     private static MockUpUser[] CreateUsers()
     {
-        string[] names = new string[] {"a"};
+        string[] names = new string[] {
+            "Franklin", "Kermit", "KrazyFrog", "Froggo", "Amphibius",
+            "Croagunk", "Toxicroak", "Greninja", "Froakie", "HypnoToad",
+            "Pepe", "FrogoBaggins", "Jiraya", "Jim", "Dwight",
+            "FrankReynolds", "Legs", "Rune", "TahmKench", "Aogaeru",
+            "Jumpy", "Rana", "Frosk", "FrogLee", "Kikker",
+            "Beka", "Frosch", "Vatraxos"};
         MockUpUser[] users = new MockUpUser[names.Length];
 
         var random = new System.Random();
