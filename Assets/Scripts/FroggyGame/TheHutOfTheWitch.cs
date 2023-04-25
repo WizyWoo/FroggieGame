@@ -7,6 +7,7 @@ public struct MockUpUser
         public int id;
         public string name;
         public int cosmeticsTotal;
+        public Color color;
         public string tombStoneMessage;
         public int tomStoneScore;
         public int coinCount;
@@ -50,6 +51,7 @@ public class TheHutOfTheWitch : MonoBehaviour
             user.tomStoneScore = (int)Mathf.Sqrt(random.Next(0, 45));
             user.coinCount = (int)Mathf.Sqrt(random.Next(0, 222));
             user.hasBattlePass = random.Next(0, 10) == 0;
+            user.color = new Color((float)random.NextDouble() * 1.5f, (float)random.NextDouble() * 1.5f, (float)random.NextDouble() * 1.5f);
 
             users[i] = user;
         }
