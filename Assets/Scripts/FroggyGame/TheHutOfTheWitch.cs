@@ -47,12 +47,12 @@ public class TheHutOfTheWitch : MonoBehaviour
 
             user.id = i;
             user.name = names[i];
-            user.cosmeticsTotal = (int)Mathf.Sqrt(random.Next(0, 6));
+            user.cosmeticsTotal = (int)Mathf.Pow(random.Next(0, 6), 2f);
             user.tombStoneMessage = "if you see this pretend its really funny and laugh out loud";
-            user.tomStoneScore = (int)Mathf.Sqrt(random.Next(0, 45));
+            user.tomStoneScore = (int)Mathf.Pow(random.Next(0, 45), 2f);
             user.highscore = 0;
-            while (user.highscore < user.tomStoneScore) user.highscore = (int)Mathf.Sqrt(random.Next(0, 46));
-            user.coinCount = (int)Mathf.Sqrt(random.Next(0, 222));
+            while (user.highscore < user.tomStoneScore) user.highscore = (int)Mathf.Pow(random.Next(0, 46), 2f);
+            user.coinCount = (int)Mathf.Pow(random.Next(0, 222), 2f);
             user.hasBattlePass = random.Next(0, 10) == 0;
             user.color = new Color((float)random.NextDouble() * 1.5f, (float)random.NextDouble() * 1.5f, (float)random.NextDouble() * 1.5f);
 
