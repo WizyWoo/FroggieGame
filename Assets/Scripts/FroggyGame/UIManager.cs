@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
 
     [SerializeField]
-    private TMP_Text highscoreText, scoreText;
+    private TMP_Text highscoreText, scoreText, fliesCollectedText;
     [SerializeField]
     private LevelController levelController;
     [SerializeField]
@@ -30,6 +30,7 @@ public class UIManager : MonoBehaviour
     {
 
         scoreText.text = "Distance: " + levelController.DistanceMoved;
+        fliesCollectedText.text = "Flies: " + levelController.FliesCollected;
 
         if(levelController.FrogGone)
             retryPanel.SetActive(true);

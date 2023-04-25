@@ -13,16 +13,21 @@ public class LevelController : MonoBehaviour
     {
         get { return frogGone; }
     }
+    public int FliesCollected
+    {
+        get { return fliesCollected; }
+    }
     [SerializeField]
     private Transform player;
     [SerializeField]
-    private GameObject lilliPadPrefab;
+    private GameObject lilliPadPrefab, flyPrefab;
     [SerializeField]
     private int lilliPadsToSpawn;
     [SerializeField]
     private float lilliSize, lilliPadDistance;
     private List<Transform> lilliPads;
-    private int distanceMoved;
+    private GameObject fly;
+    private int distanceMoved, fliesCollected;
     private float newLilliPadY;
     private bool frogGone;
     private Transform targetLilli;
@@ -52,8 +57,13 @@ public class LevelController : MonoBehaviour
 
         }
 
+        fly = GameObject.Instantiate(flyPrefab, new Vector2(0, Random.Range(lilliPads[0].position.y, lilliPads[lilliPads.Count].position.y)), Quaternion.identity);
+
         targetLilli = lilliPads[1];
         player.gameObject.GetComponent<FrogController>().SittinHard(new Vector2(0, targetLilli.position.y));
+
+        if(PlayerPrefs.HasKey("FliesCollected"))
+            fliesCollected = PlayerPrefs.GetInt("FliesCollected", 0);
 
     }
 
@@ -62,6 +72,15 @@ public class LevelController : MonoBehaviour
 
         if(frogGone)
             return;
+
+        if(player.position.y >= fly.transform.position.y - 1)
+        {
+
+            fliesCollected++;
+            PlayerPrefs.SetInt("FliesCollected", fliesCollected);
+            fly.transform.position = new Vector2(0, Random.Range(lilliPads[lilliPads.Count-1].position.y, lilliPads[lilliPads.Count].position.y));
+
+        }
 
         if(player.position.y >= targetLilli.position.y)
         {
