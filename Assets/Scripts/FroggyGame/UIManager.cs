@@ -30,7 +30,8 @@ public class UIManager : MonoBehaviour
     {
 
         scoreText.text = "Distance: " + levelController.DistanceMoved;
-        fliesCollectedText.text = "Flies: " + levelController.FliesCollected;
+        if(fliesCollectedText)
+            fliesCollectedText.text = "Flies: " + levelController.FliesCollected;
 
         if(levelController.FrogGone)
             retryPanel.SetActive(true);
