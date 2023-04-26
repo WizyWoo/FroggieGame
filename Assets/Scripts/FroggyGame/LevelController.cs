@@ -57,7 +57,7 @@ public class LevelController : MonoBehaviour
 
         }
 
-        if(fly)
+        if(flyPrefab)
             fly = GameObject.Instantiate(flyPrefab, new Vector2(0, Random.Range(lilliPads[0].position.y, lilliPads[lilliPads.Count-1].position.y)), Quaternion.identity);
 
         targetLilli = lilliPads[1];
