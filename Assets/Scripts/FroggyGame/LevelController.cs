@@ -57,7 +57,8 @@ public class LevelController : MonoBehaviour
 
         }
 
-        fly = GameObject.Instantiate(flyPrefab, new Vector2(0, Random.Range(lilliPads[0].position.y, lilliPads[lilliPads.Count-1].position.y)), Quaternion.identity);
+        if(fly)
+            fly = GameObject.Instantiate(flyPrefab, new Vector2(0, Random.Range(lilliPads[0].position.y, lilliPads[lilliPads.Count-1].position.y)), Quaternion.identity);
 
         targetLilli = lilliPads[1];
         player.gameObject.GetComponent<FrogController>().SittinHard(new Vector2(0, targetLilli.position.y));
@@ -73,14 +74,15 @@ public class LevelController : MonoBehaviour
         if(frogGone)
             return;
 
-        if(player.position.y >= fly.transform.position.y - 1)
-        {
+        if(fly)
+            if(player.position.y >= fly.transform.position.y - 1)
+            {
 
-            fliesCollected++;
-            PlayerPrefs.SetInt("FliesCollected", fliesCollected);
-            fly.transform.position = new Vector2(0, Random.Range(lilliPads[lilliPads.Count-2].position.y, lilliPads[lilliPads.Count-1].position.y));
+                fliesCollected++;
+                PlayerPrefs.SetInt("FliesCollected", fliesCollected);
+                fly.transform.position = new Vector2(0, Random.Range(lilliPads[lilliPads.Count-2].position.y, lilliPads[lilliPads.Count-1].position.y));
 
-        }
+            }
 
         if(player.position.y >= targetLilli.position.y)
         {
